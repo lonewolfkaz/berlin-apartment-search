@@ -1,0 +1,20 @@
+export const SEEDS = [
+  {id:"ch48c11",address:"Charlottenburger Str. 48–49, WE C1.1",district:"weissensee",price:475000,size:67.25,rooms:3,floor:1,totalFloors:4,year:2023,energy:"B",broker:false,kfw:"",url:"https://kolarski.landingpage.immobilien/public/a/einheit/uNHLVfGYiAoMrSFQ8tx3vBbC/3C31RAgiPLnCHdUwUyqUZqhR",status:"contacted",created:"2025-05-14T10:00:00Z",
+    notes:"🔑 KEY. Target €430–450K + parking. Viewing #2 Sat 13:00.",
+    ev:{verdict:"conditional",vt:"⚠️ CONDITIONAL — fits budget at negotiated price, but fails size/Ring/transit.",
+      building:"2023, 4 fl, VICTORIA GmbH, Zvi Hecker, 84 ETW",unit:"3 rooms, 67.25 m², 1.OG, Energieklasse B",transit:"25–35 min HBF (Tram only)",schools:"Pankow — 24.8% ndH",parks:"Weißer See",hausgeld:280,
+      hc:[["Not EG",true,"1.OG"],["Not DG",true,"1/4"],["Inside Ring",false,"Weißensee"],["U/S ≤15min",false,"No U/S"],["Parks",true,"Weißer See"],["Schools <40%",true,"~25%"],["Budget",true,"€513K"],["Size ≥72m²",false,"67.25m²"],["HBF",false,"25–35min"]],
+      pros:["Neubau 2023","No broker","Active WEG Beirat","Target €430–450K","Best school district","Liked in person","Parking available"],
+      cons:["67m² < 72m² min","Outside Ring, no U/S","25–35 min HBF","5 Gutachten (defects)","Lawsuit vs VICTORIA GmbH","2 water incidents 2025","Hausgeld €280 +21%/2yr","Sanierungsgebiet"],
+      qs:["Negotiate €430–450K + parking","WoFlV Loggia coefficient?","Lawsuit status","Steigleitung scope","Ausgleichsbetrag"],
+      eq:["Fußbodenheizung","Fernwärme","Aufzug","Loggia","Fahrradraum","TG-Stellplatz","Keller"]}},
+  {id:"kurf46",address:"Kurfürstenstraße 46, 10785 Berlin",district:"mitte",price:640000,size:75,rooms:3,floor:2,totalFloors:6,year:2021,energy:"A",broker:true,kfw:"",url:"https://immodo-berlin.landingpage.immobilien/public/a/einheit/N8LpigcFb6ZuXSkaNMWeiHjh/sJzFNd53o9uYfvLCnjbEhFDg",status:"rejected",created:"2025-05-13T10:00:00Z",
+    notes:"❌ All-in €714K = over budget. Straßenstrich.",
+    ev:{verdict:"rejected",vt:"❌ PASS — over budget +€74K, Straßenstrich, bad schools.",
+      building:"2021, 6 fl, IMMODO Berlin, Luxus Neubau",unit:"3 rooms, 75 m², 2.OG, Energieklasse A",transit:"~10–12 min HBF",schools:"Mitte — 75% ndH",parks:"Tiergarten, Gleisdreieck",hausgeld:438,
+      hc:[["Not EG",true,"2.OG"],["Not DG",true,"2/6"],["Inside Ring",true,"Yes"],["U/S ≤15min",true,"U1/U2 ~8min"],["Parks",true,"Tiergarten"],["Schools <40%",false,"75% ndH"],["Budget",false,"€714K"],["Location",false,"Straßenstrich"]],
+      pros:["Baujahr 2021 neuwertig","Energieklasse A","Fernwärme + FBH","Luxus Ausstattung","~10 min HBF"],
+      cons:["Straßenstrich location","€714K over budget","Hausgeld €438","1 bath for 3 rooms","Mitte 75% ndH"],
+      qs:["WEG Wirtschaftsplan","Teilungserklärung","Visit evening","Schulsprengel"],
+      eq:["Fußbodenheizung","Fernwärme","Aufzug","Markenküche","Parkett","Elektrische Jalousien","Südbalkon","Keller","Barrierefrei"]}}
+]
