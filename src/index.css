@@ -110,15 +110,17 @@ body {
 
 /* ── rows ── */
 .row {
-  @apply flex justify-between items-center py-[10px] border-b border-line-light;
+  @apply flex items-baseline py-[10px] border-b border-line-light gap-3;
 }
 
 .row-label {
-  @apply text-sm text-ink3;
+  @apply text-sm text-ink3 shrink-0;
+  min-width: 70px;
 }
 
 .row-value {
-  @apply text-sm font-semibold text-ink;
+  @apply text-sm font-semibold text-ink text-right;
+  flex: 1;
 }
 
 /* ── icon squares ── */
@@ -526,4 +528,104 @@ body {
 /* page bottom spacer for fixed CTA */
 .bottom-spacer {
   @apply pb-[90px];
+}
+
+/* ── mode switcher ── */
+.mode-switcher {
+  @apply flex bg-line-light mb-5 p-1;
+  border-radius: var(--radius-pill);
+}
+
+.mode-btn {
+  @apply flex-1 py-2.5 text-center text-[13px] font-semibold cursor-pointer border-0 bg-transparent text-ink3;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+
+.mode-btn-on {
+  @apply bg-ink text-white;
+}
+
+/* ── drop zone ── */
+.drop-zone {
+  @apply flex flex-col items-center justify-center py-10 px-4 mb-4 text-center cursor-pointer;
+  border: 2px dashed var(--color-line);
+  border-radius: var(--radius-card);
+  transition: all 0.2s;
+}
+
+.drop-zone-over {
+  border-color: var(--color-blue);
+  background: var(--color-blue-soft);
+}
+
+.drop-zone-success {
+  border-color: var(--color-green);
+  background: var(--color-green-soft);
+}
+
+.drop-zone-error {
+  border-color: var(--color-red);
+  background: var(--color-red-soft);
+}
+
+.drop-icon {
+  @apply text-4xl mb-3;
+}
+
+.drop-text {
+  @apply text-sm text-ink3 mb-1;
+  font-family: var(--font-sans);
+}
+
+.drop-browse {
+  @apply text-sm font-semibold cursor-pointer bg-transparent border-0 p-0;
+  color: var(--color-blue);
+  font-family: var(--font-sans);
+}
+
+.drop-error {
+  @apply text-[13px] font-semibold mt-3;
+  color: var(--color-red);
+}
+
+/* ── schema reference ── */
+.schema-block {
+  @apply text-[12px] leading-relaxed p-4 overflow-x-auto;
+  white-space: pre-wrap;
+  background: var(--color-line-light);
+  border-radius: 12px;
+  font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+  color: var(--color-ink2);
+}
+
+.schema-fields {
+  @apply text-[12px] leading-relaxed p-4 mt-2;
+  white-space: pre-wrap;
+  background: var(--color-line-light);
+  border-radius: 12px;
+  font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+  color: var(--color-ink3);
+}
+
+.copy-row {
+  @apply flex gap-2 mt-3;
+}
+
+.copy-btn {
+  @apply px-3 py-2 text-[12px] font-semibold border-0 cursor-pointer;
+  background: var(--color-ink);
+  color: white;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  transition: all 0.15s;
+}
+
+.copy-btn-done {
+  @apply px-3 py-2 text-[12px] font-semibold border-0;
+  background: var(--color-green);
+  color: white;
+  border-radius: 8px;
+  font-family: var(--font-sans);
 }

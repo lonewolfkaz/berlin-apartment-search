@@ -1,0 +1,38 @@
+{
+  "address": "Lehrter Str. 25, 10557 Berlin",
+  "district": "moabit",
+  "price": 520000,
+  "size": 78,
+  "rooms": 3,
+  "floor": 2,
+  "totalFloors": 5,
+  "year": 2019,
+  "energy": "B",
+  "broker": false,
+  "kfw": "",
+  "url": "https://example.com/listing",
+  "notes": "Bezugsfrei ab sofort",
+  "ev": {
+    "verdict": "match",
+    "vt": "MATCH — fits all core criteria, excellent transit.",
+    "building": "2019, 5 fl, modern Neubau",
+    "unit": "3 rooms, 78 m², 2.OG, Energieklasse B",
+    "transit": "12 min HBF",
+    "schools": "Mitte — 75% ndH",
+    "parks": "Fritz-Schloss-Park",
+    "hausgeld": 320,
+    "hc": [
+      ["Not EG", true, "2.OG"],
+      ["Not DG", true, "2/5"],
+      ["Inside Ring", true, "Yes"],
+      ["U/S 15min", true, "U9 Turmstr 8min"],
+      ["Parks", true, "Fritz-Schloss-Park"],
+      ["Schools <40%", false, "75% ndH"],
+      ["Budget", true, "562K all-in"]
+    ],
+    "pros": ["Bezugsfrei", "No broker", "Good transit"],
+    "cons": ["Bad schools", "Moabit noise"],
+    "qs": ["WEG Protokolle", "Hausgeld history"],
+    "eq": ["Fussbodenheizung", "Aufzug", "Balkon"]
+  }
+}
