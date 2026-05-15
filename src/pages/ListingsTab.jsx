@@ -1,11 +1,13 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { DISTRICTS, DEMOJI } from "../data/districts.js"
 import { T, STATUS_OPTS } from "../data/constants.js"
 import { calcAllIn, fmt } from "../utils/calculations.js"
 import { Pill } from "../components/Pill.jsx"
 import { ScenarioDots } from "../components/ScenarioDots.jsx"
 
-export function ListingsTab({listings, onOpen}) {
+export function ListingsTab({listings}) {
+  var navigate = useNavigate()
   var s = useState("all")
   var filter = s[0]
   var setFilter = s[1]
@@ -38,7 +40,7 @@ export function ListingsTab({listings, onOpen}) {
         var dist = DISTRICTS.find(function(d) { return d.id === l.district })
         var st = STATUS_OPTS.find(function(s) { return s.id === l.status }) || STATUS_OPTS[0]
         return (
-          <div key={l.id} onClick={function() { onOpen(l.id) }} className="card mb-3 cursor-pointer">
+          <div key={l.id} onClick={function() { navigate("/listing/" + l.id) }} className="card mb-3 cursor-pointer">
             <div className="card-pad">
               <div className="flex justify-between items-start mb-2">
                 <div className="flex-1 min-w-0">

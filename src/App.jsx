@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react"
+import { Routes, Route, Navigate, useParams } from "react-router-dom"
 import { SEEDS } from "./data/seeds.js"
 import { Header } from "./components/Header.jsx"
 import { TabBar } from "./components/TabBar.jsx"
@@ -31,19 +32,20 @@ function saveLst(a) {
   catch (e) { console.error(e) }
 }
 
+function DetailRoute({listings, onStatus, onDel}) {
+  var params = useParams()
+  var l = listings.find(function(x) { return x.id === params.id })
+  if (!l) return <Navigate to="/" replace />
+  return <DetailPage l={l} onStatus={onStatus} onDel={onDel} />
+}
+
 export default function App() {
-  var ts = useState("listings")
-  var tab = ts[0]
-  var setTab = ts[1]
   var ls = useState(SEEDS)
   var listings = ls[0]
   var setListings = ls[1]
   var ld = useState(false)
   var loaded = ld[0]
   var setLoaded = ld[1]
-  var ds = useState(null)
-  var detailId = ds[0]
-  var setDetailId = ds[1]
   useEffect(function() {
     setListings(loadLst())
     setLoaded(true)
@@ -53,32 +55,34 @@ export default function App() {
   }, [listings, loaded])
   var addL = useCallback(function(l) {
     setListings(function(p) { return p.concat([l]) })
-    setTab("listings")
   }, [])
   var delL = useCallback(function(id) {
     setListings(function(p) { return p.filter(function(l) { return l.id !== id }) })
-    setDetailId(null)
   }, [])
   var chSt = useCallback(function(id, st) {
     setListings(function(p) {
       return p.map(function(l) { return l.id === id ? Object.assign({}, l, {status: st}) : l })
     })
   }, [])
-  var dl = detailId ? listings.find(function(l) { return l.id === detailId }) : null
-  if (dl) {
-    return (
-      <div className="app-shell">
-        <DetailPage l={dl} onBack={function() { setDetailId(null) }} onStatus={chSt} onDel={delL} />
-      </div>
-    )
-  }
   return (
-    <div className="app-shell">
-      <Header listings={listings} />
-      <TabBar tab={tab} setTab={setTab} />
-      {tab === "districts" && <DistrictsTab />}
-      {tab === "listings" && <ListingsTab listings={listings} onOpen={setDetailId} />}
-      {tab === "add" && <AddTab onSave={addL} />}
-    </div>
+    <Routes>
+      <Route path="/listing/:id" element={
+        <div className="app-shell">
+          <DetailRoute listings={listings} onStatus={chSt} onDel={delL} />
+        </div>
+      } />
+      <Route path="*" element={
+        <div className="app-shell">
+          <Header listings={listings} />
+          <TabBar />
+          <Routes>
+            <Route path="/" element={<ListingsTab listings={listings} />} />
+            <Route path="/districts" element={<DistrictsTab />} />
+            <Route path="/add" element={<AddTab onSave={addL} />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
+      } />
+    </Routes>
   )
 }

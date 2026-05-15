@@ -1,9 +1,11 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { DISTRICTS } from "../data/districts.js"
 import { T, ENERGY } from "../data/constants.js"
 import { fmt, calcAllIn } from "../utils/calculations.js"
 
 export function AddTab({onSave}) {
+  var navigate = useNavigate()
   var s = useState({address:"",district:"moabit",price:"",size:"",rooms:"3",floor:"",totalFloors:"",year:"",energy:"B",broker:false,kfw:"",url:"",notes:""})
   var f = s[0]
   var setF = s[1]
@@ -114,6 +116,7 @@ export function AddTab({onSave}) {
             created: new Date().toISOString()
           })
           setF({address:"",district:"moabit",price:"",size:"",rooms:"3",floor:"",totalFloors:"",year:"",energy:"B",broker:false,kfw:"",url:"",notes:""})
+          navigate("/")
         }}
         disabled={!valid}
         className={valid ? "btn-primary" : "btn-primary-disabled"}

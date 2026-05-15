@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom"
 import { DISTRICTS, DEMOJI } from "../data/districts.js"
 import { T, STATUS_OPTS } from "../data/constants.js"
 import { calcAllIn, scoreScenarios, fmt } from "../utils/calculations.js"
 import { Pill } from "../components/Pill.jsx"
 import { Section } from "../components/Section.jsx"
 
-export function DetailPage({l, onBack, onStatus, onDel}) {
+export function DetailPage({l, onStatus, onDel}) {
+  var navigate = useNavigate()
   var allIn = calcAllIn(l.price, l.broker)
   var ppm = Math.round(l.price / l.size)
   var dist = DISTRICTS.find(function(d) { return d.id === l.district })
@@ -27,7 +29,7 @@ export function DetailPage({l, onBack, onStatus, onDel}) {
   return (
     <div className="bottom-spacer">
       <div className="topbar">
-        <button onClick={onBack} className="btn-text">← Back</button>
+        <button onClick={function() { navigate("/") }} className="btn-text">← Back</button>
         <Pill text={st.label} color={st.color} bg={st.bg} />
       </div>
       <div className="detail-hero">
@@ -177,7 +179,7 @@ export function DetailPage({l, onBack, onStatus, onDel}) {
           </select>
           <button
             onClick={function() {
-              if (confirm("Delete?")) { onDel(l.id); onBack() }
+              if (confirm("Delete?")) { onDel(l.id); navigate("/") }
             }}
             className="btn-danger"
           >Delete</button>
