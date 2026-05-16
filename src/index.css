@@ -446,6 +446,125 @@ body {
   @apply text-[13px] text-ink3 leading-relaxed;
 }
 
+/* ── complexes (within districts) ── */
+.cpx-section {
+  @apply text-[11px] font-bold text-ink4 uppercase mt-4 mb-2 flex items-center gap-2;
+  letter-spacing: 0.4px;
+}
+
+.cpx-section::before,
+.cpx-section::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-line);
+}
+
+.cpx-card {
+  @apply overflow-hidden mt-2.5;
+  background: var(--color-line-light);
+  border-radius: 12px;
+  border-left: 3px solid var(--color-line);
+  transition: box-shadow 0.2s;
+}
+
+.cpx-card-sale {
+  border-left-color: var(--color-green);
+}
+
+.cpx-card-possible {
+  border-left-color: var(--color-amber);
+}
+
+.cpx-card-monitor {
+  border-left-color: var(--color-ink4);
+}
+
+.cpx-card-none {
+  border-left-color: var(--color-red);
+}
+
+.cpx-card-over {
+  border-left-color: var(--color-red);
+  opacity: 0.55;
+}
+
+.cpx-head {
+  @apply px-3.5 py-3 flex items-start justify-between cursor-pointer gap-2;
+}
+
+.cpx-name {
+  @apply text-[14px] font-semibold text-ink;
+  font-family: var(--font-serif);
+}
+
+.cpx-addr {
+  @apply text-[12px] text-ink3 mt-[2px];
+}
+
+.cpx-right {
+  @apply flex items-center gap-1.5 shrink-0 flex-wrap justify-end;
+}
+
+.cpx-price {
+  @apply text-[13px] font-bold text-ink;
+}
+
+.cpx-price-over {
+  @apply text-[13px] font-bold line-through;
+  color: var(--color-red);
+}
+
+.cpx-body {
+  @apply px-3.5 pb-3.5;
+  border-top: 1px solid var(--color-line);
+}
+
+.cpx-energy-uncertain {
+  border: 1.5px dashed currentColor !important;
+}
+
+.cpx-scenario {
+  @apply text-[10px] px-1.5 py-0.5 font-semibold uppercase;
+  border-radius: var(--radius-pill);
+  background: var(--color-line);
+  color: var(--color-ink3);
+  letter-spacing: 0.2px;
+}
+
+.cpx-features {
+  @apply flex flex-wrap gap-1.5 mt-2.5;
+}
+
+.cpx-verify {
+  @apply text-[12px] px-3 py-2 mt-2.5 leading-relaxed;
+  background: var(--color-amber-soft);
+  color: var(--color-amber);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.cpx-status-note {
+  @apply text-[12px] mt-2 italic;
+  color: var(--color-ink3);
+}
+
+.cpx-strategy {
+  @apply px-3.5 py-3 mt-2.5 text-[13px] text-ink2 leading-relaxed;
+  background: var(--color-amber-soft);
+  border-radius: 12px;
+}
+
+.cpx-link {
+  @apply inline-flex items-center justify-center w-6 h-6 shrink-0 text-ink4;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+
+.cpx-link:hover {
+  color: var(--color-blue);
+}
+
 /* ── empty state ── */
 .empty {
   @apply px-5 py-20 text-center;
