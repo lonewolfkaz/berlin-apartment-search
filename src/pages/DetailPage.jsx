@@ -29,7 +29,7 @@ export function DetailPage({l, onStatus, onDel}) {
   return (
     <div className="bottom-spacer">
       <div className="topbar">
-        <button onClick={function() { navigate("/") }} className="btn-text">← Back</button>
+        <button onClick={function() { navigate("/") }} className="btn-text">← Pipeline</button>
         <Pill text={st.label} color={st.color} bg={st.bg} />
       </div>
       <div className="detail-hero">
@@ -93,7 +93,7 @@ export function DetailPage({l, onStatus, onDel}) {
                   <span
                     className="icon-sq"
                     style={{
-                      background: r.fit ? T.greenSoft : "#F7F7F5",
+                      background: r.fit ? T.greenSoft : T.surfaceAlt,
                       color: r.fit ? T.green : T.ink4,
                       fontSize: 11,
                       fontWeight: 700

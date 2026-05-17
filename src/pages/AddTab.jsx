@@ -182,7 +182,7 @@ export function AddTab({onSave}) {
               type="checkbox"
               checked={f.broker}
               onChange={function(e) { set("broker", e.target.checked) }}
-              style={{width: 20, height: 20, accentColor: T.rose}}
+              style={{width: 20, height: 20, accentColor: T.green}}
             /> Broker (3.57%)
           </label>
           {f.price && f.size ? (

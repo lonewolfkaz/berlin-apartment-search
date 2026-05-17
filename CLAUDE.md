@@ -123,39 +123,41 @@ Listing {
 
 ### Visual Direction
 
-Editorial minimalism inspired by rachelchen.tech — serif headings, clean sans body, generous whitespace, warm-cool palette.
+Dark, data-dense brutalist interface. Near-black background, monospace data typography, large display numbers, neon/warm accent system for status indicators. No shadows, flat surfaces, minimal radius.
 
 ### Fonts
 
-- **Headings**: `Instrument Serif` (italic for app title, regular for section titles, addresses)
-- **Body**: `DM Sans` (all UI text, labels, data)
+- **Display/Headings**: `Space Grotesk` (weight 500) — addresses, large numbers, page titles
+- **Data/Body**: `JetBrains Mono` (weight 400/500) — labels, metadata, status text, all numeric data
 - Loaded via Google Fonts CDN
 
 ### Color Tokens (object `T`)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `bg` | #FAFCFD | Page background |
-| `card` | #FFFFFF | Card backgrounds |
-| `ink` | #1A1A1A | Primary text |
-| `ink2` | #3D3D3D | Secondary text |
-| `ink3` | #6B6B6B | Tertiary/muted text |
-| `ink4` | #A3A3A3 | Disabled/placeholder |
-| `green/greenSoft` | #1A7F37 / #DAFBE1 | Pass, in-budget, pros |
-| `red/redSoft` | #CF222E / #FFEBE9 | Fail, over-budget, cons |
-| `amber/amberSoft` | #BF8700 / #FFF8C5 | Warning, conditional |
-| `blue/blueSoft` | #0969DA / #DDF4FF | New status, info |
-| `purple/purpleSoft` | #8250DF / #FBEFFF | Contacted status |
-| `rose` | #FF385C | CTA buttons (Save listing) |
+| `bg` | #0E0E0C | Page background |
+| `surface` | #1F1E1B | Card backgrounds, elevated surfaces |
+| `surfaceAlt` | #2A2924 | Secondary surface (inputs, filter bar) |
+| `border` | #5A5953 | Subtle borders, dividers |
+| `ink` | #F5F4EF | Primary text (headings, key data) |
+| `ink2` | #B7B6AE | Secondary text (labels, metadata) |
+| `ink3` | #8E8D86 | Tertiary text (breadcrumbs, IDs) |
+| `ink4` | #5A5953 | Disabled/placeholder |
+| `green/greenSoft` | #B6FF1A / #1A2E0A | Pass, in-budget, pros |
+| `red/redSoft` | #FF5D2A / #2E1510 | Fail, over-budget, cons |
+| `amber/amberSoft` | #FFC800 / #2E2400 | Warning, conditional |
+| `blue/blueSoft` | #4DA6FF / #0D1F33 | Info, school ratings |
+| `purple/purpleSoft` | #8B5CF6 / #1E1233 | Accent |
 
 ### Component Patterns
 
-- Cards: `border-radius: 14px`, `box-shadow` (no borders), white background
-- Pills: `border-radius: 20px`, colored bg + text, 11px font
-- Sections: serif title with ▾ toggle, collapsible content
+- Cards: `border-radius: 2px`, no shadows, dark surface background
+- Pills: `border-radius: 2px`, colored text + dark tint background, 11px mono font
+- Sections: display font title with ▾ toggle, collapsible content
 - Requirements/Pros/Cons: icon squares (28×28, rounded-8) + text rows
-- Form inputs: `background: #F3F4F6`, no border, `border-radius: 12px`
-- Fixed bottom CTA: dark button with gradient fade overlay
+- Form inputs: `background: surfaceAlt`, no border, `border-radius: 12px`
+- Fixed bottom CTA: ink-colored button with gradient fade overlay
+- Hard-check indicators: pass=#B6FF1A, fail=#FF5D2A, conditional=#FFC800
 
 ## Patterns to Follow
 
@@ -165,7 +167,7 @@ Editorial minimalism inspired by rachelchen.tech — serif headings, clean sans 
 - Scenario scoring is computed, never stored — edit `SCENARIOS` to change criteria
 - Components use `function` declarations (not arrow functions) for JSX compatibility
 - No optional chaining (`?.`) — use explicit null checks
-- Mobile-first: `max-width: 480px` container, generous touch targets
+- Mobile-first: `max-width: 640px` container, generous touch targets
 
 ## Coding Preferences
 

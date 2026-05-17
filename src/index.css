@@ -1,41 +1,39 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #FAFCFD;
-  --color-card: #FFFFFF;
-  --color-ink: #1A1A1A;
-  --color-ink2: #3D3D3D;
-  --color-ink3: #6B6B6B;
-  --color-ink4: #A3A3A3;
-  --color-rose: #FF385C;
-  --color-rose-soft: #FFF0F3;
-  --color-green: #1A7F37;
-  --color-green-soft: #DAFBE1;
-  --color-amber: #BF8700;
-  --color-amber-soft: #FFF8C5;
-  --color-red: #CF222E;
-  --color-red-soft: #FFEBE9;
-  --color-blue: #0969DA;
-  --color-blue-soft: #DDF4FF;
-  --color-purple: #8250DF;
-  --color-purple-soft: #FBEFFF;
-  --color-line: #E8E8E8;
-  --color-line-light: #F3F4F6;
+  --color-bg: #0E0E0C;
+  --color-surface: #1F1E1B;
+  --color-surface-alt: #2A2924;
+  --color-ink: #F5F4EF;
+  --color-ink2: #B7B6AE;
+  --color-ink3: #8E8D86;
+  --color-ink4: #5A5953;
+  --color-border: #5A5953;
+  --color-green: #B6FF1A;
+  --color-green-soft: #1A2E0A;
+  --color-amber: #FFC800;
+  --color-amber-soft: #2E2400;
+  --color-red: #FF5D2A;
+  --color-red-soft: #2E1510;
+  --color-blue: #4DA6FF;
+  --color-blue-soft: #0D1F33;
+  --color-purple: #8B5CF6;
+  --color-purple-soft: #1E1233;
 
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: "Instrument Serif", "Georgia", serif;
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: none;
+  --shadow-card-hover: none;
 
-  --radius-card: 14px;
-  --radius-pill: 20px;
+  --radius-card: 2px;
+  --radius-pill: 2px;
 }
 
 html,
 body {
   @apply bg-bg text-ink antialiased;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 body {
@@ -49,12 +47,8 @@ body {
 /* ── layout ── */
 .app-shell {
   @apply mx-auto bg-bg min-h-screen;
-  max-width: 480px;
-  font-family: var(--font-sans);
-}
-
-.serif {
-  font-family: var(--font-serif);
+  max-width: 640px;
+  font-family: var(--font-mono);
 }
 
 /* ── pills ── */
@@ -67,10 +61,8 @@ body {
 
 /* ── cards ── */
 .card {
-  @apply bg-card overflow-hidden;
+  @apply bg-surface overflow-hidden;
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow 0.2s;
 }
 
 .card-pad {
@@ -87,16 +79,16 @@ body {
 }
 
 .sec-head-closed {
-  @apply border-b border-line-light;
+  @apply border-b border-border;
 }
 
 .sec-title {
-  @apply text-base font-normal text-ink;
-  font-family: var(--font-serif);
+  @apply text-base font-medium text-ink;
+  font-family: var(--font-display);
 }
 
 .sec-chev {
-  @apply text-[11px] text-ink4;
+  @apply text-[11px] text-ink3;
   transition: transform 0.2s ease;
 }
 
@@ -105,22 +97,24 @@ body {
 }
 
 .sec-body {
-  @apply pb-3 border-b border-line-light;
+  @apply pb-3 border-b border-border;
 }
 
 /* ── rows ── */
 .row {
-  @apply flex items-baseline py-[10px] border-b border-line-light gap-3;
+  @apply flex items-baseline py-[10px] border-b border-border gap-3;
 }
 
 .row-label {
   @apply text-sm text-ink3 shrink-0;
   min-width: 70px;
+  font-family: var(--font-mono);
 }
 
 .row-value {
-  @apply text-sm font-semibold text-ink text-right;
+  @apply text-sm font-medium text-ink text-right;
   flex: 1;
+  font-family: var(--font-mono);
 }
 
 /* ── icon squares ── */
@@ -140,16 +134,17 @@ body {
 .label {
   @apply block text-[11px] font-bold text-ink3 mb-1.5 uppercase;
   letter-spacing: 1px;
+  font-family: var(--font-mono);
 }
 
 .input {
-  @apply w-full px-4 py-[14px] bg-line-light border-0 rounded-xl text-ink text-sm outline-none box-border;
-  font-family: var(--font-sans);
+  @apply w-full px-4 py-[14px] bg-surface-alt border-0 rounded-xl text-ink text-sm outline-none box-border;
+  font-family: var(--font-mono);
 }
 
 .input-area {
-  @apply w-full px-4 py-[14px] bg-line-light border-0 rounded-xl text-ink text-sm outline-none box-border;
-  font-family: var(--font-sans);
+  @apply w-full px-4 py-[14px] bg-surface-alt border-0 rounded-xl text-ink text-sm outline-none box-border;
+  font-family: var(--font-mono);
   min-height: 60px;
   resize: vertical;
 }
@@ -160,61 +155,73 @@ body {
 
 /* ── buttons ── */
 .btn-primary {
-  @apply w-full p-4 border-0 cursor-pointer text-[15px] font-bold transition-all bg-rose text-white;
+  @apply w-full p-4 border-0 cursor-pointer text-[15px] font-bold transition-all;
+  background: var(--color-green);
+  color: var(--color-bg);
   border-radius: var(--radius-card);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .btn-primary-disabled {
   @apply w-full p-4 border-0 text-[15px] font-bold transition-all cursor-default text-ink4;
   border-radius: var(--radius-card);
-  font-family: var(--font-sans);
-  background: #e8e8e6;
+  font-family: var(--font-mono);
+  background: var(--color-surface-alt);
 }
 
 .btn-dark {
-  @apply flex items-center justify-center w-full p-4 text-white text-[15px] font-bold no-underline box-border bg-ink;
+  @apply flex items-center justify-center w-full p-4 text-[15px] font-bold no-underline box-border;
+  background: var(--color-ink);
+  color: var(--color-bg);
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
+  font-family: var(--font-mono);
 }
 
 .btn-text {
-  @apply bg-transparent border-0 cursor-pointer text-sm font-semibold text-ink p-0;
+  @apply bg-transparent border-0 cursor-pointer text-sm font-medium text-ink3 p-0;
+  font-family: var(--font-mono);
 }
 
 .btn-danger {
   @apply px-5 py-[14px] bg-red-soft border-0 rounded-xl text-red text-sm font-semibold cursor-pointer;
+  font-family: var(--font-mono);
 }
 
 /* ── filter chips ── */
 .chip-on {
-  @apply px-4 py-2 border-0 cursor-pointer text-[13px] font-semibold whitespace-nowrap transition-all bg-ink text-white;
+  @apply px-4 py-2 border-0 cursor-pointer text-[13px] font-medium whitespace-nowrap transition-all bg-surface-alt text-ink;
   border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
 }
 
 .chip-off {
-  @apply px-4 py-2 border-0 cursor-pointer text-[13px] font-semibold whitespace-nowrap transition-all bg-line-light text-ink3;
+  @apply px-4 py-2 border-0 cursor-pointer text-[13px] font-medium whitespace-nowrap transition-all bg-transparent text-ink3;
   border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
 }
 
 /* ── header / topbar ── */
 .topbar {
-  @apply sticky top-0 z-10 bg-card flex items-center justify-between px-5 py-4 border-b border-line;
+  @apply sticky top-0 z-10 bg-surface flex items-center justify-between px-5 py-4 border-b border-border;
 }
 
 .app-header {
-  @apply px-5 pt-7 pb-5 bg-card;
+  @apply px-5 pt-7 pb-5 bg-surface;
 }
 
 .app-eyebrow {
-  @apply text-[13px] font-semibold text-ink4 uppercase;
-  letter-spacing: 2px;
+  @apply text-[10.5px] font-normal text-ink3;
+  letter-spacing: 0.5px;
+  font-family: var(--font-mono);
 }
 
 .app-title {
-  @apply text-[28px] font-normal text-ink italic mt-0.5;
-  letter-spacing: -0.5px;
-  font-family: var(--font-serif);
+  @apply text-ink mt-0.5;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  font-family: var(--font-display);
+  line-height: 1.1;
 }
 
 .stats-row {
@@ -222,24 +229,26 @@ body {
 }
 
 .stat-label {
-  @apply text-[11px] text-ink4 font-semibold uppercase;
-  letter-spacing: 0.5px;
+  @apply text-[11px] text-ink3 font-normal;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
 }
 
 .stat-value {
-  @apply text-[18px] font-extrabold text-ink mt-0.5;
-  letter-spacing: -0.3px;
+  @apply text-ink mt-0.5 font-medium;
+  font-size: 11px;
+  font-family: var(--font-mono);
 }
 
 /* ── tabs ── */
 .tabs {
-  @apply flex bg-card sticky top-0 z-10 border-b border-line;
+  @apply flex bg-surface sticky top-0 z-10 border-b border-border;
 }
 
 .tab-btn {
   @apply flex-1 pt-3 pb-2.5 px-1 border-0 cursor-pointer bg-transparent text-xs font-medium transition-all;
   border-bottom: 2px solid transparent;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .tab-btn-on {
@@ -256,23 +265,39 @@ body {
 }
 
 /* ── listing card bits ── */
+.listing-index {
+  @apply text-ink3 mb-1;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
 .listing-addr {
-  @apply text-base font-normal text-ink overflow-hidden whitespace-nowrap;
+  @apply text-ink overflow-hidden whitespace-nowrap;
   text-overflow: ellipsis;
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
 }
 
 .listing-meta {
-  @apply text-[13px] text-ink3 mt-1;
+  @apply text-ink2 mt-1;
+  font-size: 11px;
+  font-family: var(--font-mono);
 }
 
 .price-big {
-  @apply text-[18px] font-extrabold text-ink;
+  @apply text-ink;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
   letter-spacing: -0.5px;
 }
 
 .price-ppm {
-  @apply text-[13px] text-ink4 ml-2;
+  @apply text-ink3 ml-2;
+  font-size: 11px;
+  font-family: var(--font-mono);
 }
 
 /* ── detail page ── */
@@ -281,34 +306,45 @@ body {
 }
 
 .detail-addr {
-  @apply text-2xl font-normal text-ink leading-tight;
-  letter-spacing: -0.3px;
-  font-family: var(--font-serif);
+  @apply text-ink leading-tight;
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: -1px;
 }
 
 .detail-sub {
-  @apply text-sm text-ink3 mt-1.5;
+  @apply text-ink2 mt-2;
+  font-size: 11px;
+  font-family: var(--font-mono);
 }
 
 .detail-price-row {
-  @apply flex items-baseline gap-2 mt-4;
+  @apply flex items-baseline gap-2 mt-5;
 }
 
 .detail-price {
-  @apply text-[28px] font-extrabold text-ink;
+  @apply text-ink;
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
   letter-spacing: -1px;
 }
 
 .detail-price-tag {
-  @apply text-sm text-ink3;
+  @apply text-ink3;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
 }
 
 .detail-meta {
-  @apply text-[13px] text-ink4 mt-1;
+  @apply text-ink2 mt-1;
+  font-size: 11px;
+  font-family: var(--font-mono);
 }
 
 .divider {
-  @apply h-px bg-line;
+  @apply h-px bg-border;
 }
 
 .detail-body {
@@ -321,27 +357,34 @@ body {
 }
 
 .verdict-label {
-  @apply text-[13px] font-bold;
+  @apply text-[10.5px] font-bold;
+  font-family: var(--font-mono);
 }
 
 .verdict-text {
-  @apply text-sm text-ink mt-1 leading-relaxed;
+  @apply text-ink mt-1 leading-relaxed;
+  font-family: var(--font-display);
+  font-size: 18px;
 }
 
 .req-row {
-  @apply flex items-center gap-2.5 py-2 border-b border-line-light;
+  @apply flex items-center gap-2.5 py-2 border-b border-border;
 }
 
 .req-label {
-  @apply text-sm text-ink flex-1;
+  @apply text-ink flex-1;
+  font-family: var(--font-display);
+  font-size: 14px;
 }
 
 .req-detail {
-  @apply text-[13px] font-medium;
+  @apply font-medium;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
 }
 
 .scenario-row {
-  @apply py-2.5 border-b border-line-light;
+  @apply py-2.5 border-b border-border;
 }
 
 .scenario-head {
@@ -349,11 +392,13 @@ body {
 }
 
 .scenario-name {
-  @apply text-sm font-semibold flex-1;
+  @apply text-sm font-medium flex-1;
+  font-family: var(--font-mono);
 }
 
 .scenario-pass {
   @apply text-[13px] font-bold;
+  font-family: var(--font-mono);
 }
 
 .scenario-checks {
@@ -362,15 +407,17 @@ body {
 
 .check-chip {
   @apply text-[11px] px-2 py-[3px] font-medium;
-  border-radius: 8px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
 }
 
 .proco-row {
-  @apply flex items-center gap-2.5 py-2 border-b border-line-light;
+  @apply flex items-center gap-2.5 py-2 border-b border-border;
 }
 
 .proco-text {
   @apply text-sm text-ink2 flex-1 leading-relaxed;
+  font-family: var(--font-mono);
 }
 
 .proco-icon {
@@ -378,17 +425,20 @@ body {
 }
 
 .eq-tag {
-  @apply text-[13px] px-3 py-1.5 bg-line-light text-ink2;
+  @apply text-[13px] px-3 py-1.5 bg-surface-alt text-ink2;
   border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
 }
 
 .qs-row {
   @apply text-sm text-ink3 py-1.5 pl-3.5 mb-0.5 leading-relaxed;
   border-left: 3px solid color-mix(in srgb, var(--color-amber) 27%, transparent);
+  font-family: var(--font-mono);
 }
 
 .notes-text {
   @apply text-sm text-ink3 leading-relaxed;
+  font-family: var(--font-mono);
 }
 
 .action-row {
@@ -396,13 +446,13 @@ body {
 }
 
 .select {
-  @apply flex-1 px-4 py-[14px] bg-line-light border-0 rounded-xl text-sm text-ink outline-none;
-  font-family: var(--font-sans);
+  @apply flex-1 px-4 py-[14px] bg-surface-alt border-0 rounded-xl text-sm text-ink outline-none;
+  font-family: var(--font-mono);
 }
 
 .fixed-cta {
   @apply fixed bottom-0 left-0 right-0 px-5 pb-5 pt-3 mx-auto;
-  max-width: 480px;
+  max-width: 640px;
   background: linear-gradient(transparent, var(--color-bg) 20%);
 }
 
@@ -412,17 +462,18 @@ body {
 }
 
 .dist-name {
-  @apply text-[15px] font-bold text-ink;
+  @apply text-[15px] font-medium text-ink;
   letter-spacing: -0.2px;
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
 }
 
 .dist-price {
   @apply text-xs text-ink3 mt-[3px];
+  font-family: var(--font-mono);
 }
 
 .dist-body {
-  @apply px-[18px] pb-[18px] border-t border-line-light;
+  @apply px-[18px] pb-[18px] border-t border-border;
 }
 
 .dist-stat-grid {
@@ -430,26 +481,30 @@ body {
 }
 
 .dist-stat {
-  @apply bg-line-light px-3.5 py-3;
-  border-radius: 12px;
+  @apply bg-surface-alt px-3.5 py-3;
+  border-radius: 8px;
 }
 
 .dist-stat-label {
-  @apply text-[11px] text-ink4;
+  @apply text-[11px] text-ink3;
+  font-family: var(--font-mono);
 }
 
 .dist-stat-value {
-  @apply text-sm font-bold text-ink mt-0.5;
+  @apply text-sm font-medium text-ink mt-0.5;
+  font-family: var(--font-mono);
 }
 
 .dist-line {
   @apply text-[13px] text-ink3 leading-relaxed;
+  font-family: var(--font-mono);
 }
 
 /* ── complexes (within districts) ── */
 .cpx-section {
-  @apply text-[11px] font-bold text-ink4 uppercase mt-4 mb-2 flex items-center gap-2;
+  @apply text-[11px] font-bold text-ink3 uppercase mt-4 mb-2 flex items-center gap-2;
   letter-spacing: 0.4px;
+  font-family: var(--font-mono);
 }
 
 .cpx-section::before,
@@ -457,14 +512,14 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: var(--color-line);
+  background: var(--color-border);
 }
 
 .cpx-card {
   @apply overflow-hidden mt-2.5;
-  background: var(--color-line-light);
-  border-radius: 12px;
-  border-left: 3px solid var(--color-line);
+  background: var(--color-surface-alt);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-border);
   transition: box-shadow 0.2s;
 }
 
@@ -494,12 +549,13 @@ body {
 }
 
 .cpx-name {
-  @apply text-[14px] font-semibold text-ink;
-  font-family: var(--font-serif);
+  @apply text-[14px] font-medium text-ink;
+  font-family: var(--font-display);
 }
 
 .cpx-addr {
   @apply text-[12px] text-ink3 mt-[2px];
+  font-family: var(--font-mono);
 }
 
 .cpx-right {
@@ -508,16 +564,18 @@ body {
 
 .cpx-price {
   @apply text-[13px] font-bold text-ink;
+  font-family: var(--font-mono);
 }
 
 .cpx-price-over {
   @apply text-[13px] font-bold line-through;
   color: var(--color-red);
+  font-family: var(--font-mono);
 }
 
 .cpx-body {
   @apply px-3.5 pb-3.5;
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid var(--color-border);
 }
 
 .cpx-energy-uncertain {
@@ -527,9 +585,10 @@ body {
 .cpx-scenario {
   @apply text-[10px] px-1.5 py-0.5 font-semibold uppercase;
   border-radius: var(--radius-pill);
-  background: var(--color-line);
+  background: var(--color-surface);
   color: var(--color-ink3);
   letter-spacing: 0.2px;
+  font-family: var(--font-mono);
 }
 
 .cpx-features {
@@ -540,23 +599,26 @@ body {
   @apply text-[12px] px-3 py-2 mt-2.5 leading-relaxed;
   background: var(--color-amber-soft);
   color: var(--color-amber);
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
+  font-family: var(--font-mono);
 }
 
 .cpx-status-note {
   @apply text-[12px] mt-2 italic;
   color: var(--color-ink3);
+  font-family: var(--font-mono);
 }
 
 .cpx-strategy {
   @apply px-3.5 py-3 mt-2.5 text-[13px] text-ink2 leading-relaxed;
   background: var(--color-amber-soft);
-  border-radius: 12px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
 }
 
 .cpx-link {
-  @apply inline-flex items-center justify-center w-6 h-6 shrink-0 text-ink4;
+  @apply inline-flex items-center justify-center w-6 h-6 shrink-0 text-ink3;
   border-radius: 6px;
   transition: color 0.15s;
 }
@@ -575,12 +637,13 @@ body {
 }
 
 .empty-title {
-  @apply text-xl font-normal text-ink;
-  font-family: var(--font-serif);
+  @apply text-xl font-medium text-ink;
+  font-family: var(--font-display);
 }
 
 .empty-sub {
   @apply text-sm text-ink3 mt-2;
+  font-family: var(--font-mono);
 }
 
 /* ── score dots ── */
@@ -594,7 +657,7 @@ body {
 
 /* ── filter strip ── */
 .filter-strip {
-  @apply flex gap-1.5 mb-[14px] overflow-x-auto pb-1;
+  @apply flex gap-1.5 mb-[14px] overflow-x-auto;
 }
 
 .tab-pad {
@@ -606,30 +669,34 @@ body {
 }
 
 .add-title {
-  @apply text-[22px] font-normal text-ink mb-5;
-  font-family: var(--font-serif);
+  @apply text-[22px] font-medium text-ink mb-5;
+  font-family: var(--font-display);
 }
 
 .checkbox-row {
   @apply flex items-center gap-2.5 mb-[14px] text-sm text-ink2 cursor-pointer;
+  font-family: var(--font-mono);
 }
 
 .preview-box {
   @apply mb-[14px] bg-green-soft px-4 py-3.5;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .preview-label {
   @apply text-[13px] font-bold text-green;
+  font-family: var(--font-mono);
 }
 
 .preview-text {
   @apply text-sm text-ink;
+  font-family: var(--font-mono);
 }
 
 .budget-warn {
   @apply px-3.5 py-2.5 bg-red-soft text-[13px] text-red font-semibold;
-  border-radius: 10px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
 }
 
 .budget-total {
@@ -637,11 +704,13 @@ body {
 }
 
 .budget-total-label {
-  @apply text-base font-extrabold text-ink;
+  @apply text-base font-bold text-ink;
+  font-family: var(--font-mono);
 }
 
 .budget-total-value {
-  @apply text-base font-extrabold;
+  @apply text-base font-bold;
+  font-family: var(--font-mono);
 }
 
 /* page bottom spacer for fixed CTA */
@@ -651,25 +720,25 @@ body {
 
 /* ── mode switcher ── */
 .mode-switcher {
-  @apply flex bg-line-light mb-5 p-1;
+  @apply flex bg-surface-alt mb-5 p-1;
   border-radius: var(--radius-pill);
 }
 
 .mode-btn {
-  @apply flex-1 py-2.5 text-center text-[13px] font-semibold cursor-pointer border-0 bg-transparent text-ink3;
+  @apply flex-1 py-2.5 text-center text-[13px] font-medium cursor-pointer border-0 bg-transparent text-ink3;
   border-radius: var(--radius-pill);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   transition: all 0.2s;
 }
 
 .mode-btn-on {
-  @apply bg-ink text-white;
+  @apply bg-ink text-bg;
 }
 
 /* ── drop zone ── */
 .drop-zone {
   @apply flex flex-col items-center justify-center py-10 px-4 mb-4 text-center cursor-pointer;
-  border: 2px dashed var(--color-line);
+  border: 2px dashed var(--color-border);
   border-radius: var(--radius-card);
   transition: all 0.2s;
 }
@@ -695,36 +764,37 @@ body {
 
 .drop-text {
   @apply text-sm text-ink3 mb-1;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .drop-browse {
-  @apply text-sm font-semibold cursor-pointer bg-transparent border-0 p-0;
+  @apply text-sm font-medium cursor-pointer bg-transparent border-0 p-0;
   color: var(--color-blue);
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
 }
 
 .drop-error {
   @apply text-[13px] font-semibold mt-3;
   color: var(--color-red);
+  font-family: var(--font-mono);
 }
 
 /* ── schema reference ── */
 .schema-block {
   @apply text-[12px] leading-relaxed p-4 overflow-x-auto;
   white-space: pre-wrap;
-  background: var(--color-line-light);
-  border-radius: 12px;
-  font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+  background: var(--color-surface-alt);
+  border-radius: 8px;
+  font-family: var(--font-mono);
   color: var(--color-ink2);
 }
 
 .schema-fields {
   @apply text-[12px] leading-relaxed p-4 mt-2;
   white-space: pre-wrap;
-  background: var(--color-line-light);
-  border-radius: 12px;
-  font-family: "SF Mono", "Fira Code", "Menlo", monospace;
+  background: var(--color-surface-alt);
+  border-radius: 8px;
+  font-family: var(--font-mono);
   color: var(--color-ink3);
 }
 
@@ -735,16 +805,16 @@ body {
 .copy-btn {
   @apply px-3 py-2 text-[12px] font-semibold border-0 cursor-pointer;
   background: var(--color-ink);
-  color: white;
-  border-radius: 8px;
-  font-family: var(--font-sans);
+  color: var(--color-bg);
+  border-radius: 6px;
+  font-family: var(--font-mono);
   transition: all 0.15s;
 }
 
 .copy-btn-done {
   @apply px-3 py-2 text-[12px] font-semibold border-0;
   background: var(--color-green);
-  color: white;
-  border-radius: 8px;
-  font-family: var(--font-sans);
+  color: var(--color-bg);
+  border-radius: 6px;
+  font-family: var(--font-mono);
 }

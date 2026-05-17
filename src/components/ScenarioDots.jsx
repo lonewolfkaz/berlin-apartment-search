@@ -11,8 +11,8 @@ export function ScenarioDots({l}) {
             key={s.id}
             className="dot"
             style={{
-              background: s.fit ? T.greenSoft : "#F7F7F5",
-              color: s.fit ? T.green : T.ink4
+              background: s.fit ? T.greenSoft : T.surfaceAlt,
+              color: s.fit ? T.green : T.ink3
             }}
           >{s.label}</span>
         )

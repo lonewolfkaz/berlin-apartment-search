@@ -34,7 +34,7 @@ export function ListingsTab({listings}) {
           )
         })}
       </div>
-      {filtered.slice().sort(function(a, b) { return new Date(b.created) - new Date(a.created) }).map(function(l) {
+      {filtered.slice().sort(function(a, b) { return new Date(b.created) - new Date(a.created) }).map(function(l, idx) {
         var allIn = calcAllIn(l.price, l.broker)
         var ppm = Math.round(l.price / l.size)
         var dist = DISTRICTS.find(function(d) { return d.id === l.district })
@@ -42,18 +42,15 @@ export function ListingsTab({listings}) {
         return (
           <div key={l.id} onClick={function() { navigate("/listing/" + l.id) }} className="card mb-3 cursor-pointer">
             <div className="card-pad">
-              <div className="flex justify-between items-start mb-2">
-                <div className="flex-1 min-w-0">
-                  <div className="listing-addr">{l.address}</div>
-                  <div className="listing-meta">{dist ? (DEMOJI[dist.id] || "") + " " + dist.name : "?"} · {l.rooms} rm · {l.size} m² · {l.year}</div>
-                </div>
+              <div className="listing-index">{String(idx + 1).padStart(2, "0")} · {dist ? (DEMOJI[dist.id] || "") + " " + dist.name.toUpperCase() : "?"}</div>
+              <div className="listing-addr">{l.address}</div>
+              <div className="flex justify-between items-center mt-2">
+                <span className="price-big">€{fmt(allIn)}</span>
                 <Pill text={st.label} color={st.color} bg={st.bg} />
               </div>
-              <div className="flex justify-between items-center mt-2.5">
-                <div>
-                  <span className="price-big">€{fmt(allIn)}</span>
-                  <span className="price-ppm">€{fmt(ppm)}/m²</span>
-                </div>
+              <div className="listing-meta">{l.size} m² · {l.rooms} rm · {l.year}</div>
+              <div className="flex justify-between items-center mt-1.5">
+                <span className="price-ppm">€{fmt(ppm)}/m²</span>
                 <ScenarioDots l={l} />
               </div>
             </div>
