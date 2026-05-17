@@ -627,6 +627,23 @@ body {
   color: var(--color-blue);
 }
 
+.cpx-links {
+  @apply flex flex-wrap gap-1.5 mt-2.5;
+}
+
+.cpx-link-item {
+  @apply text-[12px] px-2.5 py-1 no-underline font-medium;
+  background: var(--color-blue-soft);
+  color: var(--color-blue);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  transition: background 0.15s;
+}
+
+.cpx-link-item:hover {
+  background: color-mix(in srgb, var(--color-blue-soft) 80%, var(--color-blue) 20%);
+}
+
 /* ── empty state ── */
 .empty {
   @apply px-5 py-20 text-center;

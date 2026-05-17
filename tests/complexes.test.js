@@ -6,8 +6,8 @@ var DISTRICT_IDS = DISTRICTS.map(function(d) { return d.id })
 
 describe("COMPLEXES data", function() {
 
-  it("contains 15 entries", function() {
-    expect(COMPLEXES.length).toBe(15)
+  it("contains 17 entries", function() {
+    expect(COMPLEXES.length).toBe(17)
   })
 
   it("every complex has a valid district id", function() {
@@ -114,7 +114,52 @@ describe("district grouping", function() {
     expect(pankow[pankow.length - 1].status).toBe("none")
   })
 
-  it("weissensee has 0 complexes", function() {
-    expect(getComplexes("weissensee").length).toBe(0)
+  it("weissensee has 2 complexes", function() {
+    expect(getComplexes("weissensee").length).toBe(2)
+  })
+
+  it("weissensee complexes sort by status priority", function() {
+    var ws = getComplexes("weissensee")
+    expect(ws[0].status).toBe("sale")
+    expect(ws[1].status).toBe("sale")
+  })
+})
+
+describe("zoo and links schema", function() {
+
+  it("every complex has a zoo string field", function() {
+    COMPLEXES.forEach(function(c) {
+      expect(typeof c.zoo).toBe("string")
+      expect(c.zoo.length).toBeGreaterThan(0)
+    })
+  })
+
+  it("every complex has a links array", function() {
+    COMPLEXES.forEach(function(c) {
+      expect(Array.isArray(c.links)).toBe(true)
+    })
+  })
+
+  it("links entries have name and url strings", function() {
+    COMPLEXES.forEach(function(c) {
+      c.links.forEach(function(link) {
+        expect(typeof link.name).toBe("string")
+        expect(typeof link.url).toBe("string")
+      })
+    })
+  })
+
+  it("no complex has a single ImmoScout-only link", function() {
+    COMPLEXES.forEach(function(c) {
+      if (c.links.length === 1) {
+        expect(c.links[0].url).not.toContain("immobilienscout24")
+      }
+    })
+  })
+
+  it("no complex has the legacy url field", function() {
+    COMPLEXES.forEach(function(c) {
+      expect(c.url).toBeUndefined()
+    })
   })
 })

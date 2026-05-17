@@ -24,6 +24,7 @@ export var COMPLEXES = [
     eurSqm: [6500, 7500],
     allIn75: [530000, 605000],
     hbf: "~28 min",
+    zoo: "~33 min",
     transit: "Tram M1 Thulestraße 3', U2 Vinetastraße 12', S Schönhauser Allee 15'",
     schools: "Grundschule am Teutoburger Platz, Grundschule unter den Bäumen",
     ndh: "20–28%",
@@ -33,7 +34,14 @@ export var COMPLEXES = [
     status: "none",
     statusNote: "Primary stock sold out. No resales appearing.",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/immergruen-berlin/"},
+      {name: "Strategis", url: "https://strategis.de/projekte/immergruen"},
+      {name: "Project site", url: "https://immergruen.online/kontakt.php"},
+      {name: "UBM press", url: "https://www.ubm-development.com/press/immergruen-adorned-with-topping-out-wreath-ubm-development-celebrates-topping-out-ceremony-for-396-apartments-in-berlin-pankow/"},
+      {name: "zanderroth", url: "https://www.zanderroth.de/de/projekte/"},
+      {name: "Entwicklungsstadt", url: "https://www.entwicklungsstadt.de/thule48-letzter-bauabschnitt-im-quartier-immergruen-startet-2026/"}
+    ]
   },
   {
     id: "thulestrasse-40",
@@ -50,6 +58,7 @@ export var COMPLEXES = [
     eurSqm: [6000, 6800],
     allIn75: [486000, 550000],
     hbf: "~28 min",
+    zoo: "~33 min",
     transit: null,
     schools: null,
     ndh: "20–28%",
@@ -59,7 +68,7 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: null,
     verify: null,
-    url: null
+    links: []
   },
   {
     id: "thule48",
@@ -76,6 +85,7 @@ export var COMPLEXES = [
     eurSqm: [7200, 7200],
     allIn75: [583000, 583000],
     hbf: "~28 min",
+    zoo: "~33 min",
     transit: null,
     schools: null,
     ndh: "20–28%",
@@ -85,7 +95,13 @@ export var COMPLEXES = [
     status: "sale",
     statusNote: "On sale. Promotional pricing until 31.05.2026.",
     verify: "MaBV payment schedule, §7 MaBV bank guarantee, penalty clause, right of withdrawal if >6 months delay, UBM financial stability",
-    url: null
+    links: [
+      {name: "Project site", url: "https://www.thule48.de/en/"},
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/thule-48-berlin/"},
+      {name: "ImmoScout", url: "https://www.immobilienscout24.de/neubau/strategis-ag/thule-48-in-pankow-am-prenzlauer-berg/138416.html"},
+      {name: "Entwicklungsstadt", url: "https://www.entwicklungsstadt.de/thule48-in-pankow-hier-entstehen-78-neue-wohnungen-bis-2027/"},
+      {name: "zanderroth", url: "https://www.zanderroth.de/de/projekte/ap1a/1802"}
+    ]
   },
   {
     id: "mittenmang",
@@ -102,6 +118,7 @@ export var COMPLEXES = [
     eurSqm: [7000, 8500],
     allIn75: [567000, 689000],
     hbf: "~8 min walk",
+    zoo: "~15 min",
     transit: "S+U Hauptbahnhof 8', U9 Turmstraße 10'",
     schools: "Bezirk Mitte schools",
     ndh: "55–75%",
@@ -111,7 +128,13 @@ export var COMPLEXES = [
     status: "possible",
     statusNote: "Possible remaining primary stock or early resales.",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.de/neubau/mittenmang-berlin/"},
+      {name: "Groth Gruppe", url: "https://www.grothgruppe.de/"},
+      {name: "Lehrter Str history", url: "https://lehrter-strasse-berlin.net/mittelbereich-ostseite-neubau/"},
+      {name: "MoabitOnline", url: "https://moabitonline.de/24185"},
+      {name: "Agas overview", url: "https://www.agas-immobilien.de/mittenmang-wohnen-berlin/"}
+    ]
   },
   {
     id: "seydlitzstr",
@@ -128,6 +151,7 @@ export var COMPLEXES = [
     eurSqm: [7000, 8000],
     allIn75: [567000, 648000],
     hbf: "~10 min walk",
+    zoo: "~17 min",
     transit: null,
     schools: null,
     ndh: "55–75%",
@@ -137,7 +161,7 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: null,
     verify: null,
-    url: null
+    links: []
   },
   {
     id: "wilhelmsaue-32",
@@ -154,6 +178,7 @@ export var COMPLEXES = [
     eurSqm: [7000, 8000],
     allIn75: [567000, 648000],
     hbf: "~28 min",
+    zoo: "~15 min",
     transit: "U7 Blissestraße 5'",
     schools: null,
     ndh: "25–38%",
@@ -163,7 +188,9 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: "Monitor for resales.",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/stadtpalais-wilmersdorf-berlin/"}
+    ]
   },
   {
     id: "foxy",
@@ -180,6 +207,7 @@ export var COMPLEXES = [
     eurSqm: [7500, 8500],
     allIn75: [608000, 689000],
     hbf: "~30 min",
+    zoo: "~20 min",
     transit: null,
     schools: null,
     ndh: "25–38%",
@@ -189,7 +217,10 @@ export var COMPLEXES = [
     status: "possible",
     statusNote: "Possibly on sale.",
     verify: null,
-    url: null
+    links: [
+      {name: "Engel & Völkers", url: "https://www.engelvoelkers.com/en-de/berlin/projects/foxy/"},
+      {name: "ImmoScout", url: "https://www.immobilienscout24.de/neubau/euv-projekte-berlin-gmbh/foxy/127722.html"}
+    ]
   },
   {
     id: "fasanenstr-64",
@@ -206,6 +237,7 @@ export var COMPLEXES = [
     eurSqm: [9000, 11000],
     allIn75: [729000, 891000],
     hbf: "~22 min",
+    zoo: "~8 min",
     transit: null,
     schools: null,
     ndh: null,
@@ -215,7 +247,9 @@ export var COMPLEXES = [
     status: "over",
     statusNote: "Over budget.",
     verify: null,
-    url: null
+    links: [
+      {name: "Entwicklungsstadt", url: "https://entwicklungsstadt.de/mietwohnungen-und-wohneigentum-bauprojekte-in-charlottenburg-wilmersdorf/"}
+    ]
   },
   {
     id: "friedenauer-hoehe",
@@ -232,6 +266,7 @@ export var COMPLEXES = [
     eurSqm: [7000, 8000],
     allIn75: [567000, 648000],
     hbf: "~22 min",
+    zoo: "~18 min",
     transit: "S+U Innsbrucker Platz 5'",
     schools: null,
     ndh: "25–35%",
@@ -241,7 +276,11 @@ export var COMPLEXES = [
     status: "sale",
     statusNote: "Likely still available.",
     verify: "MaBV parameters, Instone financial stability",
-    url: null
+    links: [
+      {name: "Instone", url: "https://instone.de/de/bauprojekte/berlin/friedenauerhoehe/"},
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/marlene-und-dietrich-berlin/"},
+      {name: "Immobilien Aktuell", url: "https://www.immobilien-aktuell-magazin.de/topics/mietendeckel-behindert-friedenauer-hoehe-quartier-berlin/"}
+    ]
   },
   {
     id: "palais-friedenau",
@@ -258,6 +297,7 @@ export var COMPLEXES = [
     eurSqm: [7000, 9000],
     allIn75: [567000, 729000],
     hbf: "~22 min",
+    zoo: "~18 min",
     transit: null,
     schools: null,
     ndh: "25–35%",
@@ -267,7 +307,9 @@ export var COMPLEXES = [
     status: "possible",
     statusNote: "Check availability (penthouse listing noted with Preissenkung).",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/palais-friedenau-berlin/"}
+    ]
   },
   {
     id: "charlottenbogen",
@@ -284,6 +326,7 @@ export var COMPLEXES = [
     eurSqm: [7500, 9000],
     allIn75: [608000, 729000],
     hbf: "~18 min",
+    zoo: "~15 min",
     transit: null,
     schools: null,
     ndh: "28–45%",
@@ -293,7 +336,9 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: "Upper budget range.",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/charlottenbogen-berlin/"}
+    ]
   },
   {
     id: "joli-coeur",
@@ -310,6 +355,7 @@ export var COMPLEXES = [
     eurSqm: [7500, 9500],
     allIn75: [608000, 770000],
     hbf: "~22 min",
+    zoo: "~15 min",
     transit: null,
     schools: null,
     ndh: null,
@@ -319,7 +365,10 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: "Likely over budget.",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.de/blog/wohnen-im-herzen-der-city-neubauprojekt-joli-coeur-in-berlin-charlottenburg/"},
+      {name: "Entwicklungsstadt", url: "https://www.entwicklungsstadt.de/wohnungen-in-ehemaliger-klinik-joli-coeur-in-charlottenburg/"}
+    ]
   },
   {
     id: "charlottenhoefe",
@@ -336,6 +385,7 @@ export var COMPLEXES = [
     eurSqm: [8500, 11000],
     allIn75: [689000, 891000],
     hbf: "~20 min",
+    zoo: "~5 min walk",
     transit: null,
     schools: null,
     ndh: null,
@@ -345,7 +395,9 @@ export var COMPLEXES = [
     status: "over",
     statusNote: "Over budget (premium Ku'damm location).",
     verify: null,
-    url: null
+    links: [
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/charlottenhoefe-berlin/"}
+    ]
   },
   {
     id: "arkonaplatz-1a",
@@ -362,6 +414,7 @@ export var COMPLEXES = [
     eurSqm: [8500, 10000],
     allIn75: [689000, 810000],
     hbf: "~18 min",
+    zoo: "~25 min",
     transit: "U8 → transfer or Tram",
     schools: null,
     ndh: "15–25%",
@@ -371,7 +424,77 @@ export var COMPLEXES = [
     status: "possible",
     statusNote: "4 units still available. Verify pricing. Likely over budget.",
     verify: null,
-    url: null
+    links: [
+      {name: "Project site", url: "https://www.arkonaplatz1a.de/"},
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/arkonaplatz-1a-berlin/"},
+      {name: "zanderroth", url: "https://www.zanderroth.de/de/projekte/ap1a/1802"},
+      {name: "SmartHoming", url: "https://www.smarthoming.de"}
+    ]
+  },
+  {
+    id: "charlie-wundergarten",
+    district: "weissensee",
+    name: "Charlie und der Wundergarten",
+    address: "Charlottenburger Str. 48, 13086 Berlin",
+    year: "2023",
+    developer: "Victoria Wohnungsbau",
+    architect: null,
+    etwCount: "84",
+    energy: "~B",
+    energyKwh: null,
+    heating: "Fernwärme · Fußbodenheizung",
+    eurSqm: [7687, 7687],
+    allIn75: [623000, 623000],
+    hbf: "~35 min",
+    zoo: "~38 min",
+    transit: "Tram M1/M13 Antonplatz 5', S Greifswalder Str ~15' walk",
+    schools: "Grundschule am Hamburger Platz, Primo-Levi-Gymnasium",
+    ndh: "20–30%",
+    parks: "Weißer See 10', Antonplatz 5'",
+    features: ["Car-free courtyard", "Underground garage with EV prep", "Commission-free", "3 buildings + 5 townhouses"],
+    scenario: "S4 (Pankow)",
+    status: "sale",
+    statusNote: "On sale. ~80% sold. Several 2–3 Zi still available.",
+    verify: "S-Bahn >15 min walk — verify Tram M13 → S Greifswalder counts",
+    links: [
+      {name: "Project site", url: "https://www.charlieundderwundergarten.de/en"},
+      {name: "ImmoScout", url: "https://www.immobilienscout24.de/neubau/kolarski-real-estate-trading-gmbh/charlie-und-der-wundergarten/133048.html"},
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/anton-und-charlotte-berlin/"},
+      {name: "Victoria Wohnungsbau", url: "https://victoriawohnungsbau.de/en/"},
+      {name: "Kolarski RE", url: "https://kolarski-re.com/de/"}
+    ]
+  },
+  {
+    id: "langhans24",
+    district: "weissensee",
+    name: "LANGHANS24",
+    address: "Langhansstraße 24, 13086 Berlin-Weißensee",
+    year: "2025–2026",
+    developer: "Baugemeinschaft Langhansstraße 24 GmbH & Co. KG",
+    architect: "zanderrotharchitekten + SmartHoming",
+    etwCount: "47 + 1 commercial",
+    energy: "~A/B",
+    energyKwh: null,
+    heating: "Fußbodenheizung",
+    eurSqm: [8000, 9500],
+    allIn75: [648000, 770000],
+    hbf: "~30 min",
+    zoo: "~35 min",
+    transit: "Tram M13 Antonplatz 5', S+U Schönhauser Allee ~15' by tram",
+    schools: null,
+    ndh: "20–30%",
+    parks: "Weißer See 10', Antonplatz 5'",
+    features: ["zanderroth design", "Baugemeinschaft model", "Green garden courtyard", "Townhouses 121–132 sqm", "Underground garage"],
+    scenario: "S2 (Neubau) / S4",
+    status: "sale",
+    statusNote: "8 units still available. Contact: lh24@smarthoming.de",
+    verify: "S-Bahn >15 min walk — verify. Baugemeinschaft pricing may exceed budget for 75+ sqm.",
+    links: [
+      {name: "Project site", url: "http://www.langhans-24.de/"},
+      {name: "Neubau Kompass", url: "https://www.neubaukompass.com/property/langhans24-berlin/"},
+      {name: "zanderroth", url: "https://www.zanderroth.de/de/projekte/lh24/2455"},
+      {name: "SmartHoming", url: "https://www.smarthoming.de/de/projekte/langhans24/691"}
+    ]
   },
   {
     id: "bavarian-strategy",
@@ -388,6 +511,7 @@ export var COMPLEXES = [
     eurSqm: [6500, 8000],
     allIn75: [526000, 648000],
     hbf: "~25 min",
+    zoo: "~12 min",
     transit: null,
     schools: "Barbarossa-GS, Spreewald-GS",
     ndh: "30–42%",
@@ -397,6 +521,6 @@ export var COMPLEXES = [
     status: "monitor",
     statusNote: "No tracked Neubau complexes. Strategy: ImmoScout filter — Baujahr/Sanierung 2015+, Bayerisches Viertel, 3 rooms, 75+ sqm.",
     verify: null,
-    url: null
+    links: []
   }
 ]

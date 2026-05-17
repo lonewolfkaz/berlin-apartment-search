@@ -28,7 +28,9 @@ export function ComplexCard({c, isOpen, onToggle}) {
 
   function handleLink(e) {
     e.stopPropagation()
-    window.open(c.url, "_blank", "noopener")
+    if (c.links && c.links.length > 0) {
+      window.open(c.links[0].url, "_blank", "noopener")
+    }
   }
 
   return (
@@ -37,7 +39,7 @@ export function ComplexCard({c, isOpen, onToggle}) {
         <div>
           <div className="cpx-name">
             {c.name}
-            {c.url && (
+            {c.links && c.links.length > 0 && (
               <span className="cpx-link" onClick={handleLink} title="Open listing">
                 {" ↗"}
               </span>
@@ -72,6 +74,7 @@ export function ComplexCard({c, isOpen, onToggle}) {
           {row("Energy", (c.energy || "") + (c.energyKwh ? " · " + c.energyKwh : ""))}
           {row("Heating", c.heating)}
           {row("HBF", c.hbf)}
+          {row("Zoo", c.zoo)}
           {row("Transit", c.transit)}
           {row("Schools", c.schools ? c.schools + (c.ndh ? " (ndH " + c.ndh + ")" : "") : (c.ndh ? "ndH " + c.ndh : null))}
           {row("Parks", c.parks)}
@@ -79,6 +82,17 @@ export function ComplexCard({c, isOpen, onToggle}) {
             <div className="cpx-features">
               {c.features.map(function(f, i) {
                 return <span key={i} className="eq-tag">{f}</span>
+              })}
+            </div>
+          )}
+          {c.links && c.links.length > 0 && (
+            <div className="cpx-links">
+              {c.links.map(function(link, i) {
+                return (
+                  <a key={i} href={link.url} target="_blank" rel="noopener noreferrer" className="cpx-link-item">
+                    {link.name} ↗
+                  </a>
+                )
               })}
             </div>
           )}
