@@ -1,6 +1,6 @@
 ---
 description: Safely merge a feature branch to main with preflight checks
-allowed-tools: Read, Glob, Bash(git status:*), Bash(git branch:*), Bash(git switch:*), Bash(git merge:*), Bash(git push:*), Bash(git log:*)
+allowed-tools: Read, Glob, Bash(git status:*), Bash(git branch:*), Bash(git switch:*), Bash(git merge:*), Bash(git push:*), Bash(git log:*), Bash(git pull:*), Bash(git fetch:*), Bash(git diff:*)
 ---
 
 You are helping the user safely merge a completed feature branch into main. Always adhere to any rules or requirements set out in any CLAUDE.md files when responding.
@@ -37,14 +37,14 @@ Run each of the following checks and report results before doing anything else.
 Run `git status --short`. If there are any uncommitted, unstaged, or untracked files, stop and tell the user to commit or stash changes before merging. DO NOT PROCEED.
 
 **2b. Spec file check**
-Look in the `specs/` directory for any `.md` file whose name matches or closely relates to the feature branch name (strip the `claude/feature/` prefix to get the slug). If a matching spec file exists, check whether it contains any unchecked items (lines starting with `- [ ]`). If unchecked items exist, warn the user:
+Look in both `specs/` and `_specs/` directories for any `.md` file whose name matches or closely relates to the feature branch name (strip the `claude/feature/` prefix to get the slug). If a matching spec file exists, check whether it contains any unchecked items (lines starting with `- [ ]`). If unchecked items exist, warn the user:
 > "Your spec file has unchecked items. Have you completed everything? Reply 'yes' to continue or 'no' to go back."
 Wait for confirmation before proceeding.
 
 If no spec file is found, skip this check silently.
 
 **2c. Plan file check**
-Look in the `specs/` or root directory for any plan file related to this feature (e.g. `plan-<slug>.md` or similar). If found, check for unchecked items the same way as above.
+Look in the `specs/`, `_specs/`, or root directory for any plan file related to this feature (e.g. `plan-<slug>.md` or similar). If found, check for unchecked items the same way as above.
 
 **2d. Unpushed commits**
 Run `git log origin/main..HEAD --oneline`. If there are unpushed commits on the feature branch, warn the user:
@@ -62,10 +62,12 @@ Ready to merge:
   Feature branch : <feature_branch>
   Merging into   : main
   Steps ahead    :
-    1. git switch main
-    2. git merge <feature_branch>
-    3. git push origin main
-    4. git branch -d <feature_branch>
+    1. git fetch origin
+    2. git switch main
+    3. git pull origin main
+    4. git merge <feature_branch>
+    5. git push origin main
+    6. git branch -D <feature_branch>
 
 Proceed? Reply 'yes' to continue.
 ```
@@ -79,11 +81,17 @@ Wait for the user to confirm.
 Run each command in order. After each one, print the output and confirm it succeeded before moving to the next.
 
 ```bash
+git fetch origin
 git switch main
+git pull origin main
 git merge <feature_branch>
 git push origin main
-git branch -d <feature_branch>
+git branch -D <feature_branch>
 ```
+
+Notes:
+- `git fetch` + `git pull` sync local main with remote BEFORE merging. This prevents push rejections caused by remote commits (e.g. merged PRs on GitHub).
+- Use `git branch -D` (force delete) instead of `-d` because after a pull with rebase, the original feature branch commit hashes no longer match the rebased ones on main. Since we just merged the content, force-deleting is safe.
 
 If any command fails, stop immediately and show the error. Do not run subsequent steps.
 
