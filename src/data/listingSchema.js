@@ -147,7 +147,8 @@ export function validateListing(data) {
   listing.kfw = data.kfw != null ? String(data.kfw) : ""
   listing.url = data.url != null ? String(data.url) : ""
   listing.notes = data.notes != null ? String(data.notes) : ""
-  listing.ev = (data.ev != null && typeof data.ev === "object" && !Array.isArray(data.ev)) ? data.ev : null
+  var evData = data.evaluation || data.ev
+  listing.evaluation = (evData != null && typeof evData === "object" && !Array.isArray(evData)) ? evData : null
 
   return { valid: true, listing: listing, errors: [] }
 }

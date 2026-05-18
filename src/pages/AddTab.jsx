@@ -22,6 +22,12 @@ export function AddTab({onSave}) {
   var cs = useState(false)
   var copyDone = cs[0]
   var setCopyDone = cs[1]
+  var sv = useState(false)
+  var saving = sv[0]
+  var setSaving = sv[1]
+  var es = useState("")
+  var saveErr = es[0]
+  var setSaveErr = es[1]
 
   var set = function(k, v) {
     setF(function(p) {
@@ -62,6 +68,8 @@ export function AddTab({onSave}) {
   function handleImportSave() {
     if (!importResult || !importResult.listing) return
     var l = importResult.listing
+    setSaving(true)
+    setSaveErr("")
     onSave({
       address: l.address,
       district: l.district,
@@ -76,13 +84,16 @@ export function AddTab({onSave}) {
       kfw: l.kfw,
       url: l.url,
       notes: l.notes,
-      ev: l.ev,
-      id: Date.now().toString(36),
       status: "new",
-      created: new Date().toISOString()
+      evaluation: l.evaluation || null
+    }).then(function() {
+      setImportResult(null)
+      navigate("/")
+    }).catch(function(e) {
+      setSaveErr(e.message || "Failed to save listing")
+    }).finally(function() {
+      setSaving(false)
     })
-    setImportResult(null)
-    navigate("/")
   }
 
   function copySchema() {
@@ -201,10 +212,11 @@ export function AddTab({onSave}) {
           </div>
           <button
             onClick={function() {
+              setSaving(true)
+              setSaveErr("")
               onSave({
                 address: f.address,
                 district: f.district,
-                id: Date.now().toString(36),
                 price: Number(f.price),
                 size: Number(f.size),
                 rooms: Number(f.rooms),
@@ -216,15 +228,20 @@ export function AddTab({onSave}) {
                 kfw: f.kfw,
                 url: f.url,
                 notes: f.notes,
-                status: "new",
-                created: new Date().toISOString()
+                status: "new"
+              }).then(function() {
+                setF({address:"",district:"moabit",price:"",size:"",rooms:"3",floor:"",totalFloors:"",year:"",energy:"B",broker:false,kfw:"",url:"",notes:""})
+                navigate("/")
+              }).catch(function(e) {
+                setSaveErr(e.message || "Failed to save listing")
+              }).finally(function() {
+                setSaving(false)
               })
-              setF({address:"",district:"moabit",price:"",size:"",rooms:"3",floor:"",totalFloors:"",year:"",energy:"B",broker:false,kfw:"",url:"",notes:""})
-              navigate("/")
             }}
-            disabled={!valid}
-            className={valid ? "btn-primary" : "btn-primary-disabled"}
-          >Save listing</button>
+            disabled={!valid || saving}
+            className={valid && !saving ? "btn-primary" : "btn-primary-disabled"}
+          >{saving ? "Saving..." : "Save listing"}</button>
+          {saveErr ? <div className="save-error">{saveErr}</div> : null}
         </div>
       ) : (
         <div>
@@ -238,8 +255,10 @@ export function AddTab({onSave}) {
               <ImportPreview listing={importResult.listing} />
               <button
                 onClick={handleImportSave}
-                className="btn-primary"
-              >Save listing</button>
+                disabled={saving}
+                className={saving ? "btn-primary-disabled" : "btn-primary"}
+              >{saving ? "Saving..." : "Save listing"}</button>
+              {saveErr ? <div className="save-error">{saveErr}</div> : null}
             </div>
           ) : null}
           <Section title="JSON Schema for Claude" open={false}>

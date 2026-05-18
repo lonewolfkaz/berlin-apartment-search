@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { DISTRICTS, DEMOJI } from "../data/districts.js"
 import { T, STATUS_OPTS } from "../data/constants.js"
@@ -7,12 +8,15 @@ import { Section } from "../components/Section.jsx"
 
 export function DetailPage({l, onStatus, onDel}) {
   var navigate = useNavigate()
+  var er = useState("")
+  var error = er[0]
+  var setError = er[1]
   var allIn = calcAllIn(l.price, l.broker)
   var ppm = Math.round(l.price / l.size)
   var dist = DISTRICTS.find(function(d) { return d.id === l.district })
   var st = STATUS_OPTS.find(function(s) { return s.id === l.status }) || STATUS_OPTS[0]
   var res = scoreScenarios(l)
-  var ev = l.ev
+  var ev = l.evaluation
   var gst = Math.round(l.price * 0.06)
   var nt = Math.round(l.price * 0.02)
   var mk = l.broker ? Math.round(l.price * 0.0357) : 0
@@ -54,7 +58,7 @@ export function DetailPage({l, onStatus, onDel}) {
             {row("Building", ev.building)}
             {row("Unit", ev.unit)}
             {row("Transit", ev.transit)}
-            {row("Schools", ev.schools, ev.schools.indexOf("75%") >= 0 ? T.red : T.ink)}
+            {row("Schools", ev.schools, ev.schools && ev.schools.indexOf("75%") >= 0 ? T.red : T.ink)}
             {row("Parks", ev.parks)}
             {ev.hausgeld ? row("Hausgeld", "€" + ev.hausgeld + "/mo") : null}
           </Section>
@@ -170,7 +174,12 @@ export function DetailPage({l, onStatus, onDel}) {
         <div className="action-row">
           <select
             value={l.status}
-            onChange={function(e) { onStatus(l.id, e.target.value) }}
+            onChange={function(e) {
+              setError("")
+              onStatus(l.id, e.target.value).catch(function(err) {
+                setError(err.message || "Failed to update status")
+              })
+            }}
             className="select"
           >
             {STATUS_OPTS.map(function(s) {
@@ -179,11 +188,19 @@ export function DetailPage({l, onStatus, onDel}) {
           </select>
           <button
             onClick={function() {
-              if (confirm("Delete?")) { onDel(l.id); navigate("/") }
+              if (confirm("Delete?")) {
+                setError("")
+                onDel(l.id).then(function() {
+                  navigate("/")
+                }).catch(function(err) {
+                  setError(err.message || "Failed to delete listing")
+                })
+              }
             }}
             className="btn-danger"
           >Delete</button>
         </div>
+        {error ? <div className="save-error">{error}</div> : null}
       </div>
       {l.url && (
         <div className="fixed-cta">

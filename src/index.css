@@ -187,6 +187,17 @@ body {
   font-family: var(--font-mono);
 }
 
+.save-error {
+  @apply mt-3 text-red text-sm;
+  font-family: var(--font-mono);
+}
+
+.loading-center {
+  @apply flex items-center justify-center text-ink2 text-sm;
+  font-family: var(--font-mono);
+  min-height: 60vh;
+}
+
 /* ── filter chips ── */
 .chip-on {
   @apply px-4 py-2 border-0 cursor-pointer text-[13px] font-medium whitespace-nowrap transition-all bg-surface-alt text-ink;

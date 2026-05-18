@@ -18,8 +18,8 @@ export function ImportPreview({listing}) {
   var distName = dist ? dist.name : listing.district
 
   var vc = null
-  if (listing.ev && listing.ev.verdict) {
-    vc = VERDICT_COLORS[listing.ev.verdict] || null
+  if (listing.evaluation && listing.evaluation.verdict) {
+    vc = VERDICT_COLORS[listing.evaluation.verdict] || null
   }
 
   return (
@@ -32,7 +32,7 @@ export function ImportPreview({listing}) {
               {emoji + " " + distName} · {listing.rooms} rm · {listing.size} m² · {listing.year}
             </div>
           </div>
-          {vc ? <Pill text={listing.ev.verdict} color={vc.color} bg={vc.bg} /> : null}
+          {vc ? <Pill text={listing.evaluation.verdict} color={vc.color} bg={vc.bg} /> : null}
         </div>
         <div className="flex justify-between items-center mt-2.5">
           <div>
